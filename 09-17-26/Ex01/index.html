@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spider Calculator | Operadores em PHP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <div class="system-status">
+            <span class="status-dot"></span>
+            SENTIDO ARANHA ATIVO
+        </div>
+
+        <header class="hero">
+            <p class="eyebrow">QUEENS // WEB CALCULATION SYSTEM</p>
+            <h1>SPIDER CALC</h1>
+            <p class="subtitle">Operadores aritméticos em PHP</p>
+        </header>
+
+        <form action="index.php" method="POST" class="calculator-form">
+            <div class="field-group">
+                <label for="valor1">Primeiro valor</label>
+                <div class="input-shell">
+                    <span>01</span>
+                    <input
+                        type="number"
+                        id="valor1"
+                        name="valor1"
+                        step="any"
+                        placeholder="Digite o primeiro valor"
+                        required
+                    >
+                </div>
+            </div>
+
+            <div class="field-group">
+                <label for="valor2">Segundo valor</label>
+                <div class="input-shell">
+                    <span>02</span>
+                    <input
+                        type="number"
+                        id="valor2"
+                        name="valor2"
+                        step="any"
+                        placeholder="Digite o segundo valor"
+                        required
+                    >
+                </div>
+            </div>
+
+            <button type="submit">
+                <span>Calcular operações</span>
+            </button>
+        </form>
+
+        <footer class="system-footer">
+            <span>WEB-SHOOTER // ONLINE</span>
+            <span>PHP OPERATOR SYSTEM</span>
+        </footer>
+    </main>
+</body>
+</html>
