@@ -1,0 +1,434 @@
+/* =========================================================
+   PARACETALOKA — SISTEMA DE FARMÁCIA (ESTILO SIMPLES)
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --verde: #16a34a;
+    --verde-escuro: #15803d;
+    --verde-claro: #dcfce7;
+
+    --fundo: #f1f5f4;
+    --branco: #ffffff;
+    --borda: #d9e2df;
+
+    --texto: #1f2937;
+    --texto-secundario: #6b7280;
+}
+
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
+body {
+    min-height: 100vh;
+    font-family: "DM Sans", Arial, sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 16px;
+}
+
+
+/* =========================================================
+   CARD PRINCIPAL
+   ========================================================= */
+
+.receita {
+    width: 100%;
+    max-width: 520px;
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.topo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 12px;
+    padding: 24px 28px;
+    background: var(--verde);
+    color: var(--branco);
+}
+
+.topo h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.slogan {
+    width: 100%;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+
+/* =========================================================
+   CRUZ
+   ========================================================= */
+
+.cruz {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.cruz::before,
+.cruz::after {
+    content: "";
+    position: absolute;
+    background: var(--branco);
+    border-radius: 2px;
+}
+
+.cruz::before {
+    width: 24px;
+    height: 8px;
+    top: 8px;
+    left: 0;
+}
+
+.cruz::after {
+    width: 8px;
+    height: 24px;
+    top: 0;
+    left: 8px;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+form {
+    padding: 28px;
+}
+
+.campo {
+    margin-bottom: 20px;
+}
+
+label,
+legend {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--texto);
+}
+
+fieldset {
+    border: none;
+}
+
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    height: 44px;
+    padding: 0 12px;
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+    background: var(--branco);
+    color: var(--texto);
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+}
+
+input::placeholder {
+    color: #9ca3af;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border-color: var(--verde);
+    box-shadow: 0 0 0 3px var(--verde-claro);
+}
+
+
+/* =========================================================
+   CAMPO DE MOEDA
+   ========================================================= */
+
+.moeda {
+    display: flex;
+}
+
+.moeda > span {
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    background: var(--fundo);
+    border: 1px solid var(--borda);
+    border-right: none;
+    border-radius: 6px 0 0 6px;
+    color: var(--texto-secundario);
+    font-weight: 700;
+}
+
+.moeda input {
+    border-radius: 0 6px 6px 0;
+}
+
+
+/* =========================================================
+   FAIXAS ETÁRIAS
+   ========================================================= */
+
+.blister {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.blister input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.blister label {
+    margin: 0;
+    padding: 12px 8px;
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+    background: var(--branco);
+    text-align: center;
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.blister label strong {
+    font-size: 1rem;
+}
+
+.blister label small {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--texto-secundario);
+}
+
+.blister label:hover {
+    border-color: var(--verde);
+}
+
+.blister input:checked + label {
+    background: var(--verde-claro);
+    border-color: var(--verde);
+}
+
+.blister input:checked + label small {
+    color: var(--verde-escuro);
+}
+
+.blister input:focus-visible + label {
+    box-shadow: 0 0 0 3px var(--verde-claro);
+}
+
+
+/* =========================================================
+   CARTÃO FIDELIDADE
+   ========================================================= */
+
+.fidelidade {
+    padding: 14px;
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+}
+
+.fidelidade input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.fidelidade label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.fidelidade label > span:last-child {
+    display: flex;
+    flex-direction: column;
+}
+
+.fidelidade label small {
+    font-weight: 400;
+    color: var(--verde-escuro);
+}
+
+
+/* =========================================================
+   SWITCH
+   ========================================================= */
+
+.chave {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+    border-radius: 24px;
+    background: #cbd5e1;
+    transition: background 0.2s;
+}
+
+.chave::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--branco);
+    transition: transform 0.2s;
+}
+
+.fidelidade input:checked + label .chave {
+    background: var(--verde);
+}
+
+.fidelidade input:checked + label .chave::after {
+    transform: translateX(20px);
+}
+
+.fidelidade input:focus-visible + label .chave {
+    box-shadow: 0 0 0 3px var(--verde-claro);
+}
+
+
+/* =========================================================
+   BOTÃO
+   ========================================================= */
+
+button {
+    width: 100%;
+    height: 48px;
+    margin-top: 4px;
+    border: none;
+    border-radius: 6px;
+    background: var(--verde);
+    color: var(--branco);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+button:hover {
+    background: var(--verde-escuro);
+}
+
+
+/* =========================================================
+   RESULTADO
+   ========================================================= */
+
+.resultado {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.resultado li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--borda);
+}
+
+.resultado li span {
+    color: var(--texto-secundario);
+    font-size: 0.9rem;
+}
+
+.resultado li strong {
+    text-align: right;
+}
+
+.resultado li .desconto {
+    color: var(--verde-escuro);
+}
+
+.total-final {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 16px;
+    border-radius: 6px;
+    background: var(--verde-claro);
+}
+
+.total-final span {
+    font-weight: 700;
+}
+
+.total-final strong {
+    font-size: 1.5rem;
+    color: var(--verde-escuro);
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    body {
+        align-items: flex-start;
+        padding: 16px;
+    }
+
+    .topo,
+    form {
+        padding: 20px;
+    }
+
+    .blister {
+        grid-template-columns: 1fr;
+    }
+
+    .blister label {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
