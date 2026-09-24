@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paracetaloka</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<!--
+    a farmácia Parecetaloka, deseja calcular o total do pedido de seus clientes com base na faixa etária e cartão fidelidade.
+    crie um sistema que obtenha o nome do cliente, total do pedido, escolha a faixa etária e se o pagamento é por cartão fidelidade.
+    assuma que:
+        Idade <50: Sem desconto;
+        Idade entre 51 e 70: 5% de desconto;
+        Idade >= 70: 7% de desconto
+
+    se o cartão fidelidade for selecionado, o cliente terá mais 5% de desconto
+-->
+
+<body>
+    <main class="receita">
+        <header class="topo">
+            <span class="cruz" aria-hidden="true"></span>
+            <h1>Farmácia Paracetaloka</h1>
+            <p class="slogan">Calcule o desconto do pedido</p>
+        </header>
+
+        <form action="calcular.php" method="post">
+            <div class="campo">
+                <label for="nome">Nome do Cliente:</label>
+                <input type="text" id="nome" name="nome" placeholder="Ex.: Maria da Silva" required>
+            </div>
+
+            <div class="campo">
+                <label for="total">Total do Pedido:</label>
+                <div class="moeda">
+                    <span>R$</span>
+                    <input type="number" id="total" name="total" step="0.01" min="0" placeholder="0,00" required>
+                </div>
+            </div>
+
+            <fieldset class="campo">
+                <legend>Faixa Etária:</legend>
+                <div class="blister">
+                    <input type="radio" id="idade1" name="idade" value="menor50" required>
+                    <label for="idade1"><strong>Até 50</strong><small>sem desconto</small></label>
+
+                    <input type="radio" id="idade2" name="idade" value="51-70" required>
+                    <label for="idade2"><strong>51 a 70</strong><small>5% off</small></label>
+
+                    <input type="radio" id="idade3" name="idade" value=">=70" required>
+                    <label for="idade3"><strong>70+</strong><small>7% off</small></label>
+                </div>
+            </fieldset>
+
+            <div class="campo fidelidade">
+                <input type="checkbox" id="fidelidade" name="fidelidade">
+                <label for="fidelidade">
+                    <span class="chave" aria-hidden="true"></span>
+                    <span>Cartão Fidelidade <small>+5% de desconto</small></span>
+                </label>
+            </div>
+
+            <button type="submit">
+                <span class="metade-a">Calcular</span>
+                <span class="metade-b">Desconto</span>
+            </button>
+        </form>
+    </main>
+</body>
+
+</html>
