@@ -1,178 +1,98 @@
 /* =========================================================
-   PARACETALOKA — SISTEMA DE FARMÁCIA (ESTILO SIMPLES)
+   PARACETALOKA — CSS SIMPLES E DIRETO
    ========================================================= */
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
-
-:root {
-    --verde: #16a34a;
-    --verde-escuro: #15803d;
-    --verde-claro: #dcfce7;
-
-    --fundo: #f1f5f4;
-    --branco: #ffffff;
-    --borda: #d9e2df;
-
-    --texto: #1f2937;
-    --texto-secundario: #6b7280;
-}
-
-
-/* =========================================================
-   BODY
-   ========================================================= */
 
 body {
-    min-height: 100vh;
-    font-family: "DM Sans", Arial, sans-serif;
-    background: var(--fundo);
-    color: var(--texto);
-
+    background-color: #f4f6f8;
+    color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px 16px;
+    min-height: 100vh;
+    padding: 20px;
 }
 
-
-/* =========================================================
-   CARD PRINCIPAL
-   ========================================================= */
-
+/* Card Principal */
 .receita {
+    background-color: #ffffff;
     width: 100%;
-    max-width: 520px;
-    background: var(--branco);
-    border: 1px solid var(--borda);
-    border-radius: 10px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    max-width: 480px;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     overflow: hidden;
 }
 
-
-/* =========================================================
-   HEADER
-   ========================================================= */
-
+/* Cabeçalho */
 .topo {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 4px 12px;
-    padding: 24px 28px;
-    background: var(--verde);
-    color: var(--branco);
+    background-color: #16a34a;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
 }
 
 .topo h1 {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 4px;
 }
 
 .slogan {
-    width: 100%;
-    font-size: 0.9rem;
+    font-size: 14px;
     opacity: 0.9;
 }
 
-
-/* =========================================================
-   CRUZ
-   ========================================================= */
-
 .cruz {
-    position: relative;
-    width: 24px;
-    height: 24px;
-    flex-shrink: 0;
+    display: none;
 }
 
-.cruz::before,
-.cruz::after {
-    content: "";
-    position: absolute;
-    background: var(--branco);
-    border-radius: 2px;
-}
-
-.cruz::before {
-    width: 24px;
-    height: 8px;
-    top: 8px;
-    left: 0;
-}
-
-.cruz::after {
-    width: 8px;
-    height: 24px;
-    top: 0;
-    left: 8px;
-}
-
-
-/* =========================================================
-   FORM
-   ========================================================= */
-
+/* Formulário e Campos */
 form {
-    padding: 28px;
+    padding: 20px;
 }
 
 .campo {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
-label,
-legend {
+label, legend {
     display: block;
     margin-bottom: 6px;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--texto);
+    font-size: 14px;
+    font-weight: bold;
+    color: #444;
 }
 
 fieldset {
     border: none;
 }
 
-
-/* =========================================================
-   INPUTS
-   ========================================================= */
-
+/* Inputs de Texto, Número e Select */
 input[type="text"],
-input[type="number"] {
+input[type="number"],
+select {
     width: 100%;
-    height: 44px;
-    padding: 0 12px;
-    border: 1px solid var(--borda);
-    border-radius: 6px;
-    background: var(--branco);
-    color: var(--texto);
-    font-family: inherit;
-    font-size: 1rem;
+    padding: 10px 12px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 15px;
     outline: none;
-}
-
-input::placeholder {
-    color: #9ca3af;
+    background-color: #ffffff;
 }
 
 input[type="text"]:focus,
-input[type="number"]:focus {
-    border-color: var(--verde);
-    box-shadow: 0 0 0 3px var(--verde-claro);
+input[type="number"]:focus,
+select:focus {
+    border-color: #16a34a;
 }
 
-
-/* =========================================================
-   CAMPO DE MOEDA
-   ========================================================= */
-
+/* Campo de Moeda */
 .moeda {
     display: flex;
 }
@@ -181,254 +101,277 @@ input[type="number"]:focus {
     display: flex;
     align-items: center;
     padding: 0 12px;
-    background: var(--fundo);
-    border: 1px solid var(--borda);
+    background-color: #eeeeee;
+    border: 1px solid #cccccc;
     border-right: none;
-    border-radius: 6px 0 0 6px;
-    color: var(--texto-secundario);
-    font-weight: 700;
+    border-radius: 4px 0 0 4px;
+    color: #666666;
+    font-weight: bold;
 }
 
 .moeda input {
-    border-radius: 0 6px 6px 0;
+    border-radius: 0 4px 4px 0;
 }
 
-
-/* =========================================================
-   FAIXAS ETÁRIAS
-   ========================================================= */
-
+/* Faixa Etária */
 .blister {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
     gap: 8px;
 }
 
-.blister input {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
+.blister input[type="radio"] {
+    display: none;
 }
 
 .blister label {
+    flex: 1;
     margin: 0;
-    padding: 12px 8px;
-    border: 1px solid var(--borda);
-    border-radius: 6px;
-    background: var(--branco);
+    padding: 10px 6px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    background-color: #ffffff;
     text-align: center;
     cursor: pointer;
-
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 2px;
+    transition: background-color 0.2s, border-color 0.2s;
 }
 
 .blister label strong {
-    font-size: 1rem;
+    font-size: 14px;
 }
 
 .blister label small {
-    font-size: 0.75rem;
-    font-weight: 400;
-    color: var(--texto-secundario);
+    font-size: 11px;
+    color: #777777;
+    font-weight: normal;
 }
 
 .blister label:hover {
-    border-color: var(--verde);
+    background-color: #f0fdf4;
+    border-color: #16a34a;
 }
 
 .blister input:checked + label {
-    background: var(--verde-claro);
-    border-color: var(--verde);
+    background-color: #16a34a;
+    border-color: #16a34a;
+    color: #ffffff;
 }
 
 .blister input:checked + label small {
-    color: var(--verde-escuro);
+    color: #dcfce7;
 }
 
-.blister input:focus-visible + label {
-    box-shadow: 0 0 0 3px var(--verde-claro);
-}
-
-
-/* =========================================================
-   CARTÃO FIDELIDADE
-   ========================================================= */
-
+/* Cartão Fidelidade */
 .fidelidade {
-    padding: 14px;
-    border: 1px solid var(--borda);
-    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    background-color: #f9fafb;
 }
 
-.fidelidade input {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
+.fidelidade input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
 }
 
 .fidelidade label {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 6px;
     margin: 0;
     cursor: pointer;
-}
-
-.fidelidade label > span:last-child {
-    display: flex;
-    flex-direction: column;
+    font-weight: normal;
+    font-size: 14px;
 }
 
 .fidelidade label small {
-    font-weight: 400;
-    color: var(--verde-escuro);
+    color: #16a34a;
+    font-weight: bold;
 }
-
-
-/* =========================================================
-   SWITCH
-   ========================================================= */
 
 .chave {
-    position: relative;
-    width: 44px;
-    height: 24px;
-    flex-shrink: 0;
-    border-radius: 24px;
-    background: #cbd5e1;
-    transition: background 0.2s;
+    display: none;
 }
 
-.chave::after {
-    content: "";
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: var(--branco);
-    transition: transform 0.2s;
-}
-
-.fidelidade input:checked + label .chave {
-    background: var(--verde);
-}
-
-.fidelidade input:checked + label .chave::after {
-    transform: translateX(20px);
-}
-
-.fidelidade input:focus-visible + label .chave {
-    box-shadow: 0 0 0 3px var(--verde-claro);
-}
-
-
-/* =========================================================
-   BOTÃO
-   ========================================================= */
-
+/* Botão */
 button {
     width: 100%;
-    height: 48px;
-    margin-top: 4px;
+    padding: 12px;
+    background-color: #16a34a;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
     border: none;
-    border-radius: 6px;
-    background: var(--verde);
-    color: var(--branco);
-    font-family: inherit;
-    font-size: 1rem;
-    font-weight: 700;
+    border-radius: 4px;
     cursor: pointer;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
+    transition: background-color 0.2s;
+    margin-top: 4px;
 }
 
 button:hover {
-    background: var(--verde-escuro);
+    background-color: #15803d;
 }
 
-
 /* =========================================================
-   RESULTADO
+   PÁGINA DE RESULTADO (CALCULAR.PHP)
    ========================================================= */
 
 .resultado {
     list-style: none;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 .resultado li {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--borda);
+    padding: 8px 0;
+    border-bottom: 1px solid #eeeeee;
+    font-size: 14px;
 }
 
 .resultado li span {
-    color: var(--texto-secundario);
-    font-size: 0.9rem;
+    color: #666666;
 }
 
 .resultado li strong {
-    text-align: right;
+    color: #333333;
 }
 
 .resultado li .desconto {
-    color: var(--verde-escuro);
+    color: #16a34a;
 }
 
+/* Total Final */
 .total-final {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-    padding: 16px;
-    border-radius: 6px;
-    background: var(--verde-claro);
+    padding: 14px;
+    background-color: #dcfce7;
+    border: 1px solid #bbf7d0;
+    border-radius: 4px;
+    margin-bottom: 16px;
 }
 
 .total-final span {
-    font-weight: 700;
+    font-weight: bold;
+    color: #15803d;
+    font-size: 15px;
 }
 
 .total-final strong {
-    font-size: 1.5rem;
-    color: var(--verde-escuro);
+    font-size: 20px;
+    color: #15803d;
 }
 
+/* Parcelamento */
+.parcelas-wrapper {
+    margin-bottom: 16px;
+    border: 1px solid #dddddd;
+    border-radius: 6px;
+    padding: 14px;
+    background-color: #fafafa;
+}
+
+.parcelas-header {
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.parcelas-header h3 {
+    font-size: 15px;
+    color: #333333;
+}
+
+.parcelas-desc {
+    font-size: 12px;
+    color: #777777;
+    margin-top: 2px;
+}
+
+.parcelas-comparativo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.parcelas-col {
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.badge-laco {
+    display: block;
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 3px;
+    border-radius: 3px;
+    background-color: #dcfce7;
+    color: #15803d;
+    margin-bottom: 6px;
+}
+
+.lista-parcelas {
+    list-style: none;
+}
+
+.lista-parcelas li {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    font-size: 13px;
+    border-bottom: 1px dashed #eeeeee;
+}
+
+.lista-parcelas li:last-child {
+    border-bottom: none;
+}
+
+.lista-parcelas .vezes {
+    color: #666666;
+}
+
+.lista-parcelas .valor {
+    color: #333333;
+    font-weight: bold;
+}
+
+.lista-parcelas li.ativa {
+    background-color: #f0fdf4;
+    padding: 4px 6px;
+    border-radius: 4px;
+}
+
+.tag-escolhida {
+    font-size: 10px;
+    background-color: #16a34a;
+    color: #ffffff;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-weight: bold;
+    margin-left: 6px;
+}
 
 /* =========================================================
    RESPONSIVIDADE
    ========================================================= */
 
 @media (max-width: 480px) {
-
-    body {
-        align-items: flex-start;
-        padding: 16px;
-    }
-
-    .topo,
-    form {
-        padding: 20px;
-    }
-
     .blister {
-        grid-template-columns: 1fr;
+        flex-direction: column;
     }
 
-    .blister label {
-        flex-direction: row;
-        justify-content: space-between;
+    .parcelas-comparativo {
+        grid-template-columns: 1fr;
     }
 }

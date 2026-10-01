@@ -1,7 +1,11 @@
-<?php 
-$nome = $_POST['nome'];
+<?php $nome = $_POST['nome'];
 $total = (float) $_POST['total'];
 $idade = $_POST['idade'];
+$parcelas = isset($_POST['parcelas']) ? (int) $_POST['parcelas'] : 1;
+
+// Garante que fique entre 1 e 6
+if ($parcelas < 1) $parcelas = 1;
+if ($parcelas > 6) $parcelas = 6;
 
 if(isset($_POST['fidelidade'])){
     $cartao = "Sim";
@@ -31,6 +35,7 @@ if ($cartao == "Sim") {
 $percentual = $descontoIdade + $descontoCartao;
 $valorDesconto = $total * $percentual / 100;
 $totalFinal = $total - $valorDesconto;
+$valorParcelaEscolhida = $totalFinal / $parcelas;
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -75,11 +80,62 @@ $totalFinal = $total - $valorDesconto;
                     <span>Desconto Total</span>
                     <strong class="desconto">- R$ <?= number_format($valorDesconto, 2, ',', '.') ?> (<?= $percentual ?>%)</strong>
                 </li>
+                <li>
+                    <span>Parcelamento Escolhido</span>
+                    <strong><?= $parcelas ?>x de R$ <?= number_format($valorParcelaEscolhida, 2, ',', '.') ?></strong>
+                </li>
             </ul>
 
             <div class="total-final">
                 <span>Total a Pagar</span>
                 <strong>R$ <?= number_format($totalFinal, 2, ',', '.') ?></strong>
+            </div>
+
+            <div class="parcelas-wrapper">
+                <div class="parcelas-header">
+                    <h3>Opções de Parcelamento (1x até <?= $parcelas ?>x)</h3>
+                    <p class="parcelas-desc">Cálculo de cada parcela com laço de repetição</p>
+                </div>
+
+                <div class="parcelas-comparativo">
+                    <!-- Versão 1: Laço FOR -->
+                    <div class="parcelas-col">
+                        <span class="badge-laco">Versão com FOR</span>
+                        <ul class="lista-parcelas">
+                            <?php for ($i = 1; $i <= $parcelas; $i++): ?>
+                                <?php $parcelaFor = $totalFinal / $i; ?>
+                                <li <?= ($i == $parcelas) ? 'class="ativa"' : '' ?>>
+                                    <span class="vezes"><?= $i ?>x de</span>
+                                    <strong class="valor">R$ <?= number_format($parcelaFor, 2, ',', '.') ?></strong>
+                                    <?php if ($i == $parcelas): ?>
+                                        <span class="tag-escolhida">Escolhida</span>
+                                    <?php endif; ?>
+                                </li>
+                            <?php endfor; ?>
+                        </ul>
+                    </div>
+
+                    <!-- Versão 2: Laço WHILE -->
+                    <div class="parcelas-col">
+                        <span class="badge-laco">Versão com WHILE</span>
+                        <ul class="lista-parcelas">
+                            <?php 
+                            $j = 1;
+                            while ($j <= $parcelas) {
+                                $parcelaWhile = $totalFinal / $j;
+                                $classe = ($j == $parcelas) ? "class='ativa'" : "";
+                                $tag = ($j == $parcelas) ? " <span class='tag-escolhida'>Escolhida</span>" : "";
+                                echo "<li {$classe}>";
+                                echo "<span class='vezes'>{$j}x de</span> ";
+                                echo "<strong class='valor'>R$ " . number_format($parcelaWhile, 2, ',', '.') . "</strong>";
+                                echo $tag;
+                                echo "</li>";
+                                $j++;
+                            }
+                            ?>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
             <button type="submit">
