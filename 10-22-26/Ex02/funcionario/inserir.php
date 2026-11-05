@@ -7,8 +7,9 @@
 $sql = "INSERT INTO funcionarios (nome, email, cargo, salario, data_admissao)
             VALUES ('$nome', '$email', '$cargo', '$salario', '$admissao')";
     require_once("../conexao.php");
+    /** @var mysqli $conexao */
     $resposta = mysqli_query($conexao, $sql);
     if ($resposta == true) {
-        header("location: ./10-22-26/Ex02/funcionario/listar.php");
+        header("location: listar.php");
     }
 ?>

@@ -13,9 +13,9 @@
     <?php include("menu.php"); ?>
     <div class="container">
         <h1>Bem vindo à Empresa: Empresa</h1>
-        <ul>
-            <li><a href="login.php">Login</a></li>
-            <li><a href="cadastro.php">Cadastro</a></li>
+        <ul style="list-style: none; padding: 0; margin-top: 24px; display: flex; gap: 12px;">
+            <li><a href="login.php" style="display: inline-block; padding: 10px 20px; font-size: 16px; color: #fff; background-color: #0d6efd; border: 1px solid #0d6efd; border-radius: 6px; text-decoration: none;">Login</a></li>
+            <li><a href="cadastro.php" style="display: inline-block; padding: 10px 20px; font-size: 16px; color: #0d6efd; background-color: transparent; border: 1px solid #0d6efd; border-radius: 6px; text-decoration: none;">Cadastro</a></li>
         </ul>
     </div>
 </body>

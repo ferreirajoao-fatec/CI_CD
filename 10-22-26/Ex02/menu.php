@@ -1,6 +1,10 @@
+<?php
+    // Se a página atual está dentro de uma subpasta (ex: funcionario/), volta uma pasta
+    $base = basename(dirname($_SERVER['PHP_SELF'])) == 'funcionario' ? '../' : '';
+?>
 <nav class="navbar md:navbar-expand bg-1">
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.php">Empresa</a>
+        <a class="navbar-brand" href="<?php echo $base; ?>index.php">Empresa</a>
         <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarDrawer" aria-controls="navbarDrawer" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon" aria-hidden="true"></span>
         </button>
@@ -12,7 +16,7 @@
             <div class="drawer-body mb-2 md:mb-0">
                 <ul class="nav navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="<?php echo $base; ?>index.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Link</a>
